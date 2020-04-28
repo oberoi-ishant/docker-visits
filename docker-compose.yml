@@ -1,0 +1,15 @@
+version: '3'
+services:
+  redis-server:
+    image: 'redis'
+  node-app:
+    restart: 'always'
+    build: .
+    ports:
+      - "8081:8081"
+
+# you need to run this will docker-compose up --build
+# You cannot run with docker build .
+# then docker run -p 4001:8081 <container-id> as redis-server connection
+# will not be found. Remember docker-compose willc create a network
+# between the services listed.
